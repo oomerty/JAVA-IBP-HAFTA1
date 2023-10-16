@@ -141,12 +141,28 @@ public class Main {
             Bir sayının asal çarpanlarını yazdıran programı yazınız.
         */
         /* 「AÇIKLAMA」
-            K
+            İşleme asal sayıların oluşturulması için array hazırlanarak başlanılır, deneme amaçlı array 20 uzunluğunda olacaktır.
+            Ardından en küçük asal sayı olan 2 array'in [0]. elemanı olarak manuel atanmıştır. Array'in kalanı "primeCrator" fonk ile oluşturulmuştur.
+            Sonrasında çarpanlarına ayırılacak sayı if-else ile bulduğumuz en son asal sayıdan küçük eşit olup olmadığı kontrol edilir. Eğer büyük ise uyarı yazısı gönderilir devam edilmez.
+            Eğer şart sağlanırsa, while döngüsü ile sayı asal çarpanlarına ayrılamayacak duruma gelene kadar asal sayılara bölünür.
+            İşlem sırasında "factoredText"e asal çarpanlar eklenir.
         */
         spaceForAll();
-        int primeNmbr = 12;
-        int[] primeArr = primeArrCreator(10);
-        for (int primeNmbrs : primeArr) System.out.println(primeNmbrs);
+        int[] primeNmrs = new int[20]; //Array'i 20 ile sınırlandırıyoruz
+        primeNmrs[0] = 2; // En küçük asal sayı maneul atanmıştır
+        primeCreator(primeNmrs);
+
+        int toFactored = 12, i = 0; // Çarpanlarına ayırılacak sayı ve initializer
+        String factoredText = "Sayı " + toFactored + "\n";
+        if (toFactored <= primeNmrs[primeNmrs.length - 1] && toFactored > 0) {
+            while (toFactored > 1) {
+                if (toFactored % primeNmrs[i] == 0) {
+                    factoredText += primeNmrs[i] + " ";
+                    toFactored /= primeNmrs[i];
+                } else i++;
+            }
+            System.out.println(factoredText);
+        } else System.out.println("Maalesef girdiğiniz değer asal sayılardan oluşan array'in en büyük değerinden daha büyük. Array'i büyüterek ya da sayıyı küçülterek tekrar deneyin");
 
         // 11. Soru
         /* 「SORU」
@@ -184,6 +200,42 @@ public class Main {
         /* 「AÇIKLAMA」
             K
         */
+        spaceForAll();
+        int numGoldbach = 0, numGoldbachCopy = 0, x1 = 0;
+        boolean flagGoldbach = false, flagGoldbachScan = false;
+
+        System.out.print("İkiden büyük bir çift sayı giriniz:\n");
+        String numGoldbachPrev = okuyucu.nextLine();
+        while (!flagGoldbachScan) {
+            if (Integer.parseInt(numGoldbachPrev) % 2 == 0) {
+                numGoldbach = Integer.parseInt(numGoldbachPrev);
+                flagGoldbachScan = true;
+            } else {
+                System.out.print("Sayı çift değil! İkiden büyük ÇİFT sayı giriniz:\n");
+                numGoldbachPrev = okuyucu.nextLine();
+            }
+        }
+
+        if (numGoldbach <= primeNmrs[primeNmrs.length - 1] && numGoldbach > 2) {
+            int cur = 0;
+            numGoldbachCopy = numGoldbach;
+            while (!flagGoldbach && cur < primeNmrs.length) {
+                if (numGoldbach < primeNmrs[cur]) {
+                    x1 = primeNmrs[cur-1];
+                    numGoldbachCopy -= x1;
+                    for (int j = 0; j < primeNmrs.length; j++) {
+                        if(numGoldbachCopy == primeNmrs[j]) {
+                            flagGoldbach = true;
+                            break;
+                        }
+                    }
+                }
+                cur++;
+            }
+            String goldbachText = "Sayı " + numGoldbach + "\n" + x1 + " + " + numGoldbachCopy;
+            System.out.println(goldbachText);
+        } else System.out.println("Maalesef girdiğiniz değer asal sayılardan oluşan array'in en büyük değerinden daha büyük. Array'i büyüterek ya da sayıyı küçülterek tekrar deneyin");
+
     }
 
     public static void spaceForAll() {
@@ -279,18 +331,29 @@ public class Main {
         System.out.println((hr > 0 ? hr + "sa " : "") + (mn > 0 ? mn + "dk " : "") + (copyDuration > 0 ? copyDuration + "sn " : ""));
     }
 
-    public static boolean primeChecker(int number) {
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) return false;
-        }
-        return true;
+    public static boolean isPrime(int n)
+    {
+        /* 「AÇIKLAMA」
+            Bu fonksiyon verilmiş sayının asal olup olmadığını kontrol eder.
+            "primeCreator" fonksiyonu için gereklidir.
+        */
+        for (int i = 2; i < n; i++)
+        {   if(n % i == 0) return false;
+        }   return true;
     }
 
-    public static int[] primeArrCreator(int count) {
-        int[] arr = new int[count];
-        for (int i = 0; i <= count; i++) {
-            if (primeChecker(i)) arr[i] = i;
-        }
-        return arr;
+    public static int[] primeCreator(int[] arr)
+    {
+        /* 「AÇIKLAMA」
+            Bu fonksiyon verilmiş diziyi dolduracak kadar asal sayı üretir. En küçük asal sayı manuel atandığı için işleme dizinin [1]. elemanından başlanır.
+            "isPrime" fonksiyonu ile kontrol edilen true döndürürse dizinin o anki yerine sayı atanır.
+        */
+        int arrPlace = 1, i = 3;
+        while (arr[arr.length - 1] == 0) {
+            if (isPrime(i)) {
+                arr[arrPlace] = i;
+                arrPlace++;
+            }   i++;
+        }   return arr;
     }
 }
