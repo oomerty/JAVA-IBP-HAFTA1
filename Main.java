@@ -21,16 +21,24 @@ public class Main {
             API, Kütüphane, MAVEN kavramlarını yazılım geliştirirken sunduğu katkıları belirtiniz.
         */
         /* 「AÇIKLAMA」
-            K
+            * API (Application Programming Interface), uygulamaların birbirleriyle iletişime geçebilmesi için başka bir yazılım tarafından kullanılabilen bir yazılım aracıdır.
+            Bazı konularda bilgimiz olmadığı halde istediğimizi yapmamızı sağlarlar.
+            * Programlamada Kütüphane, program tarafından kullanılan kalıcı kaynak topluluğudur. Bu kaynaklar yapılandırma verileri, dokümantasyon, önceden yazılmış kodlar veya sınıflar olabilir.
+            Kullanıcı arayüzü, sunucu bağlantısı, veri yönetimi, algortima vb. gibi çözümler sunar.
+            Geliştiriciler olarak önceden bulunmuş çözümleri tekrar yazmadan projemize ekleme imkanı sağlarlar.
+            * Maven, proje yönetimi ve anlama aracı yazılımıdır. Projelerin derlemesini, raporlamasını ve dokümantasyonunu yönetme imkanı sağlar.
         */
+        spaceForAll();
 
         // 3. Soru
         /* 「SORU」
             Debug kavramını araştırınız. 10 kere Merhaba yazısını for döngüsü ile yazınız debug modda gözlemleyiniz.
         */
         /* 「AÇIKLAMA」
-            K
+            Debugging/Hata Ayıklama, yazılımlarda hatayı tespit etme ve yok etme sürecidir. IDE'lerde bulunan debug araçları ile kodun seçili bir kısmının çalışmasını sağlayabilir,
+            belirli bir yerde durmasını isteyebilir, kodun her satırını teker teker detaylarıyla izleyebiliriz.
         */
+        for (int i = 0; i < 10; i++) System.out.println("Merhaba");
 
         // 4. Soru
         /* 「SORU」
@@ -38,8 +46,10 @@ public class Main {
             iki sayının kullanıcını secimine göre toplama, çarpma, bölme, çıkarma sonucu “JOptionPane.showMessageDialog()” gösteren programı yazınız.
         */
         /* 「AÇIKLAMA」
-            Hesap makinesi 3 aşamadan oluşmaktadır. İlk aşamada 2 tane sayı istenecektir ve alınan sayılar .split metodu ile ayrılıp
-            sonrasında "stringToNmbr" fonksiyonu ile
+            Hesap makinesi 3 aşamadan oluşmaktadır.
+            * İlk aşamada 2 tane sayı istenecektir ve alınan sayılar .split metodu ile ayrılıp sonrasında "stringToNmbr" fonksiyonu ile sayıya dönüştürülecektir.
+            * İkinci aşamada dört işlemden birisinin seçileceği pencere açılıp butonlarla kullanıcı seçimi istenecektir. Seçime göre switch-case ile sonuş döndürülecektir.
+            * Üçüncü aşamada sonuç gösterilip, yeni işlem yapılmak istenip istenmediği sorulacaktır. Devam edilmesi halinde yeni değerler alınıp tekrar baştan başlanacaktır.
         */
         spaceForAll();
         int flag = 0;
@@ -58,8 +68,7 @@ public class Main {
                 case 2 -> total = arrCalc[0] * arrCalc[1];
                 case 3 -> total = arrCalc[0] / arrCalc[1];
             }
-            int calcResult = JOptionPane.showConfirmDialog(null, "İşlem Sonucu: " + total + ". İşlem yapmaya devam etmek istiyor musunuz?",
-                    "Hesap Makinesi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int calcResult = JOptionPane.showConfirmDialog(null, "İşlem Sonucu: " + total + ". Yeni işlem yapmak istiyor musunuz?", "Hesap Makinesi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             flag = calcResult == JOptionPane.YES_OPTION ? 0 : 1;
         }
 
@@ -89,7 +98,6 @@ public class Main {
         /* 「AÇIKLAMA」
             Kullanıcıdan aralarına boşluklar koyarak sayılar girmesi istenecek, sayılar terminalden string olarak okunacak.
             String split yöntemi ile array'e ayrılacak, ardından array elemanları "stringToNmbr" fonsksiyonu ile sayıya dönüştürülecek.
-            Sunulan sayılar "sortedArr" fonksiyonu ile küçükten büyüğe sıralanacak.
             En son sunulan sayıların ortanca değeri "mid" fonk ile hesaplanıp konsola yazılacak.
         */
         spaceForAll();
@@ -103,7 +111,7 @@ public class Main {
 
         // 7. Soru
         /* 「SORU」
-            Parametresi ile aldığı int türden bir sayının negatif mi, 0(sıfır) mı, pozitif mi olduğunu test eden signum isimli metodu yazınız
+            Parametresi ile aldığı int türden bir sayının negatif mi, 0(sıfır) mı, pozitif mi olduğunu test eden signum [Line 306] isimli metodu yazınız
             ve test ediniz. Metot pozitif için 1(bir), negatif için -1(eksi bir) ve sıfır için 0(sıfır)döndürecektir.
         */
         /* 「AÇIKLAMA」
@@ -120,7 +128,7 @@ public class Main {
             Klavyeden bir n sayısı okuyunuz ve aşağıdaki deseni oluşturan programı yazınız.
         */
         /* 「AÇIKLAMA」
-            K
+            Daha fazla bilgi için "baklavaMaker" fonksiyonuna göz atınız.
         */
         spaceForAll();
         baklavaMaker(3);
@@ -131,7 +139,7 @@ public class Main {
             displayDuratioon isimli metodu yazınız. Eğer saat, dakika ya da saniye değeri 0(sıķr) ise ekrana yazdırılmayacaktır.
         */
         /* 「AÇIKLAMA」
-            K
+            Daha fazla bilgi için "displayDuration" fonksiyonuna göz atınız.
         */
         spaceForAll();
         displayDuration(4000);
@@ -169,7 +177,9 @@ public class Main {
             Klavyeden bir height ve width değişkenleri için sayılar okuyunuz ve aşağıdaki deseni oluşturunuz:
         */
         /* 「AÇIKLAMA」
-            K
+            Verilen genişlik ve yükselik değerlerine göre şekil oluşturulacaktır. "*" işareti yatay düzlemde her satırda 1 adım ilerlemektedir.
+            Eğer yıldız "|" ile belirtilmiş duvarlara çarparsa seker ve yeni döngüye geçerek ters tarafa gider.
+            Yükseklik kadar satır terminale girilene kadar iki döngü arasında gidip gelinir.
         */
         spaceForAll();
         int width = 10, height = 15;
@@ -192,13 +202,17 @@ public class Main {
                 }
             }
         }
+
         // 12. Soru
         /* 「SORU」
             2’den büyük tüm çift sayılar iki asal sayının toplamı biçiminde yazılabilir (Goldbach teoremi).
             Klavyeden bir çift sayı alan ve bunu iki asal sayının toplamı biçiminde yazdıran programı yazınız.
         */
         /* 「AÇIKLAMA」
-            K
+            Kullanıcıdan 2'den büyük bir çift sayı istenerek başlanır. Eğer şartlar sağlanmazsa tekrar sayı girmesi istenir.
+            "primeCrator" fonksiyonu ile oluşturulan 20 elemanlı asal sayı dizisi bu örnek için de kullanılacaktır.
+            Girilen sayı geçerli ise değerlendirilir ve kendisinden büyük asal sayıya denk gelince bir alttaki asal sayı seçilir ve
+            ana sayının kopyasından çıkarılır. Eğer iki sayı da asal ise döndü bozulur, değilse ikisi de asal olana kadar döndü tekrarlanır.
         */
         spaceForAll();
         int numGoldbach = 0, numGoldbachCopy = 0, x1 = 0;
@@ -207,7 +221,7 @@ public class Main {
         System.out.print("İkiden büyük bir çift sayı giriniz:\n");
         String numGoldbachPrev = okuyucu.nextLine();
         while (!flagGoldbachScan) {
-            if (Integer.parseInt(numGoldbachPrev) % 2 == 0) {
+            if (Integer.parseInt(numGoldbachPrev) % 2 == 0 && Integer.parseInt(numGoldbachPrev) > 2) {
                 numGoldbach = Integer.parseInt(numGoldbachPrev);
                 flagGoldbachScan = true;
             } else {
